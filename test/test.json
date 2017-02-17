@@ -1,0 +1,18 @@
+[ {
+  "dataset" : "test1.mytest.v2",
+  "action"  : "UPDATE",
+  "users"   : ["sashatest1", "sashatest2"] 
+},
+{
+  "dataset" : "test2.mytest.v1",
+  "action"  : "RETRACTION",
+  "users"   : ["sashatest2", "sashatest3"] 
+
+},
+{
+  "dataset" : "test3.mytes.v2",
+  "action"  : "RETRACTION",
+  "users"   : ["sashatest1", "sashatest3"] 
+
+}
+]
