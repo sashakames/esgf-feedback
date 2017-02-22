@@ -15,17 +15,16 @@ class EmailConfig:
         self.init = False
         
         
-        self.server = params['EMAIL_SERVER'] 
+        self.server = "nospam.llnl.gov"
 
-        if self.server is not None and self.server.strip() != '':
 #            self.port = siteManager.get('EMAIL_PORT', section=SECTION_EMAIL)
-            self.sender = params['EMAIL_SENDER']
+        self.sender = "ames4@llnl.gov"  # Testing purposes - change based on properties
  #           self.username = siteManager.get('EMAIL_USERNAME', section=SECTION_EMAIL)
   #          self.password = siteManager.get('EMAIL_PASSWORD', section=SECTION_EMAIL)
    #         self.security = siteManager.get('EMAIL_SECURITY', section=SECTION_EMAIL)
 #            print 'Using email server=%s' %  self.server
 #            print 'Using email port=%s' %  self.port
-            print 'Using email sender=%s' %  self.sender
+        print 'Using email sender=%s' %  self.sender
 #            print 'Using email username=%s' %  self.username
                 #print 'Using email password=%s' %  self.password
 #            print 'Using email security=%s' %  self.security

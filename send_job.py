@@ -1,7 +1,7 @@
 import json, os, logging
 
 import addr_lookup
-
+from email_sender import notify as email_notify
 
 
 IN_PATH = '/tmp/feedback'
@@ -70,24 +70,21 @@ def main():
 
             action = its[0]
 
-
             if action in user_action_dict:
-
                 
                 dset_lst = user_action_dict[action]
                 dset_lst.append(its[1])
 
-            else:
-                
+            else:                
                 user_action_dict[action] = its[1]
         
-
-
             user_action_dict["Message"] = "Dear " + usr + ": here's a notification email regarding status changes to datasets."
             outs = json.dumps(user_action_dict)
             
             dest_addr = addr_lookup.get(usr)
-            
+            subject = "test"
+
+            print dest_addr, subject, outs
 
 
     os.rmdir(LOOK_PATH)
