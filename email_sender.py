@@ -10,7 +10,7 @@ class EmailConfig:
     Site specific values are read from the cog_settings.cfg file through the SiteManager class.
     '''
     
-    def __init__(self, params):
+    def __init__(self):
         
         self.init = False
         
@@ -28,7 +28,7 @@ class EmailConfig:
 #            print 'Using email username=%s' %  self.username
                 #print 'Using email password=%s' %  self.password
 #            print 'Using email security=%s' %  self.security
-            self.init = True
+        self.init = True
             
         if not self.init:
             print "Email configuration not found, email notification disabled"

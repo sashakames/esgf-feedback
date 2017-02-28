@@ -10,7 +10,7 @@
 
 },
 {
-  "dataset" : "test3.mytes.v2",
+  "dataset" : "test3.mytest.v2",
   "action"  : "RETRACTION",
   "users"   : ["sashatest1", "sashatest3"] 
 

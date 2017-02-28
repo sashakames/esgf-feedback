@@ -13,6 +13,8 @@ LOG_FILE = '/esg/log/feedback.log'
 
 user_dict = {}
 
+out_log_arr = []
+
 
 def main():
 
@@ -20,16 +22,17 @@ def main():
     logger.setLevel(logging.WARNING)
 
 
-    os.rename(IN_PATH, LOOK_PATH)
+#    os.rename(IN_PATH, LOOK_PATH)
 
-    os.mkdir(IN_PATH)
+#    os.mkdir(IN_PATH)
 
-    files = os.listdir(LOOK_PATH)
+#    files = os.listdir(LOOK_PATH)
+    files = os.listdir(IN_PATH)
 
     for ff in files:
         
-        fpath = LOOK_PATH + '/' + ff
-        
+#        fpath = LOOK_PATH + '/' + ff
+        fpath = IN_PATH + '/' + ff
         jobj = None
         
         try:
@@ -53,9 +56,13 @@ def main():
 
                     dset_lst = user_dict[usr]
                     dset_lst.append([dset, action])
-
+                    user_dict[usr] = dset_lst
                 else:
-                    user_dict[usr] = [dset, action]
+                    user_dict[usr] = [[dset, action]]
+
+        out_log_arr.append(jobj)
+#        os.rm(LOOK_PATH + ff)
+
     for user in user_dict:
 
         user_items = user_dict[user]
@@ -65,8 +72,12 @@ def main():
         # for now hardcoded email
         
         user_action_dict = {}
+        
+        print user_items
 
         for its in user_items:
+
+            print its
 
             action = its[0]
 
@@ -78,16 +89,19 @@ def main():
             else:                
                 user_action_dict[action] = its[1]
         
-            user_action_dict["Message"] = "Dear " + usr + ": here's a notification email regarding status changes to datasets."
-            outs = json.dumps(user_action_dict)
+        user_action_dict["Message"] = "Dear " + usr + ": here's a notification email regarding status changes to datasets."
+        outs = json.dumps(user_action_dict)
             
-            dest_addr = addr_lookup.get(usr)
-            subject = "test"
+        dest_addr = addr_lookup.get(usr)
+        subject = "test"
 
-            print dest_addr, subject, outs
+        print dest_addr, subject, outs
+
 
 
     os.rmdir(LOOK_PATH)
+    open(LOG_FILE, 'w').write(json.dumps(out_log_arr))
+
     return 0
 
 if __name__ == "__main__":

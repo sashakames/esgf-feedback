@@ -1,6 +1,6 @@
 # for now a hardcoded dictionary
 
-dct = { 'sashatest': 'amysash2006@gmail.com', 'sashakames': 'ames4@llnl.gov'}
+dct = { 'sashatest1': 'amysash2006@gmail.com', 'sashatest2': 'ames4@llnl.gov', 'sashatest3': 'sashakames@gmail.com'}
 
 def get(k):
 
