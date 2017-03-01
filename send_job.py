@@ -61,7 +61,7 @@ def main():
                     user_dict[usr] = [[dset, action]]
 
         out_log_arr.append(jobj)
-        os.rm(LOOK_PATH + ff)
+        os.remove(LOOK_PATH + ff)
 
     for user in user_dict:
 
