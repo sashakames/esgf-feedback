@@ -22,17 +22,17 @@ def main():
     logger.setLevel(logging.WARNING)
 
 
-#    os.rename(IN_PATH, LOOK_PATH)
+    os.rename(IN_PATH, LOOK_PATH)
 
-#    os.mkdir(IN_PATH)
+    os.mkdir(IN_PATH)
 
-#    files = os.listdir(LOOK_PATH)
-    files = os.listdir(IN_PATH)
+    files = os.listdir(LOOK_PATH)
+#    files = os.listdir(IN_PATH)
 
     for ff in files:
         
-#        fpath = LOOK_PATH + '/' + ff
-        fpath = IN_PATH + '/' + ff
+        fpath = LOOK_PATH + '/' + ff
+#        fpath = IN_PATH + '/' + ff
         jobj = None
         
         try:
@@ -61,7 +61,7 @@ def main():
                     user_dict[usr] = [[dset, action]]
 
         out_log_arr.append(jobj)
-#        os.rm(LOOK_PATH + ff)
+        os.rm(LOOK_PATH + ff)
 
     for user in user_dict:
 
@@ -73,11 +73,7 @@ def main():
         
         user_action_dict = {}
         
-        print user_items
-
         for its in user_items:
-
-            print its
 
             action = its[0]
 
@@ -89,13 +85,15 @@ def main():
             else:                
                 user_action_dict[action] = its[1]
         
-        user_action_dict["Message"] = "Dear " + usr + ": here's a notification email regarding status changes to datasets."
-        outs = json.dumps(user_action_dict)
-            
-        dest_addr = addr_lookup.get(usr)
-        subject = "test"
+        message = "Dear " + user + ": here's a notification email regarding status changes to datasets."
 
-        print dest_addr, subject, outs
+
+        outs = Message + "\n" + json.dumps(user_action_dict)
+            
+        dest_addr = addr_lookup.get(user)
+        subject = "ESGF Datatset status updates"
+
+        notify(dest_addr, subject, outs)
 
 
 

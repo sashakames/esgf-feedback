@@ -2,38 +2,22 @@ from email.mime.text import MIMEText
 import smtplib
 from threading import Thread
 
-
-
 class EmailConfig:
     '''
     Class that stores the email server connection properties from a local configuration file.
     Site specific values are read from the cog_settings.cfg file through the SiteManager class.
     '''
-    
     def __init__(self):
-        
         self.init = False
-        
-        
         self.server = "nospam.llnl.gov"
 
-#            self.port = siteManager.get('EMAIL_PORT', section=SECTION_EMAIL)
         self.sender = "ames4@llnl.gov"  # Testing purposes - change based on properties
- #           self.username = siteManager.get('EMAIL_USERNAME', section=SECTION_EMAIL)
-  #          self.password = siteManager.get('EMAIL_PASSWORD', section=SECTION_EMAIL)
-   #         self.security = siteManager.get('EMAIL_SECURITY', section=SECTION_EMAIL)
-#            print 'Using email server=%s' %  self.server
-#            print 'Using email port=%s' %  self.port
         print 'Using email sender=%s' %  self.sender
-#            print 'Using email username=%s' %  self.username
-                #print 'Using email password=%s' %  self.password
-#            print 'Using email security=%s' %  self.security
         self.init = True
             
         if not self.init:
             print "Email configuration not found, email notification disabled"
             
-
 # module scope email configuration
 emailConfig = EmailConfig()
 
