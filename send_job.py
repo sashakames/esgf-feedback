@@ -1,4 +1,4 @@
-import json, os, logging
+import json, os, logging, sys
 
 import addr_lookup
 from email_sender import notify as email_notify
@@ -16,15 +16,14 @@ user_dict = {}
 out_log_arr = []
 
 
-def format_email()
-''' Arguments
+def format_email(user, user_action_dict):
+''' Arguments: (1) user name to address in email body; (2) a dictionary object (from json) dat structure that contains the datasets and respective update status, eg UPDATE or RETRACTION
 '''
-
+# TODO format this for the user (decode the json)
         message = "Dear " + user + ": here's a notification email regarding status changes to datasets."
 
-
         outs = message + "\n" + json.dumps(user_action_dict)
-
+        return outs
 
 
 def main():
@@ -101,10 +100,12 @@ def main():
         dest_addr = addr_lookup.get(user)
         subject = "ESGF Datatset status updates"
 
+        body = format_email(user, user_action_dict)
+
         if (len(sys.argv) > 1 and sys.argv[1] == "--test"):
-            print dest_addr, subject, outs 
+            print dest_addr, subject, body 
         else:
-            email_notify(dest_addr, subject, outs)
+            email_notify(dest_addr, subject, body)
 
 
 
