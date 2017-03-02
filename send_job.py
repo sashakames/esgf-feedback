@@ -16,6 +16,17 @@ user_dict = {}
 out_log_arr = []
 
 
+def format_email()
+''' Arguments
+'''
+
+        message = "Dear " + user + ": here's a notification email regarding status changes to datasets."
+
+
+        outs = message + "\n" + json.dumps(user_action_dict)
+
+
+
 def main():
 
     logger = logging.getLogger('esgf-feedback')
@@ -61,7 +72,7 @@ def main():
                     user_dict[usr] = [[dset, action]]
 
         out_log_arr.append(jobj)
-        os.remove(LOOK_PATH + ff)
+        os.remove(LOOK_PATH + "/" + ff)
 
     for user in user_dict:
 
@@ -85,15 +96,15 @@ def main():
             else:                
                 user_action_dict[action] = its[1]
         
-        message = "Dear " + user + ": here's a notification email regarding status changes to datasets."
 
-
-        outs = Message + "\n" + json.dumps(user_action_dict)
             
         dest_addr = addr_lookup.get(user)
         subject = "ESGF Datatset status updates"
 
-        notify(dest_addr, subject, outs)
+        if (len(sys.argv) > 1 and sys.argv[1] == "--test"):
+            print dest_addr, subject, outs 
+        else:
+            email_notify(dest_addr, subject, outs)
 
 
 

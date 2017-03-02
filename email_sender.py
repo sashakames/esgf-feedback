@@ -24,7 +24,7 @@ emailConfig = EmailConfig()
 def notify(toUser, subject, message, mime_type='plain'):  # send 'plain' email by default
     
     # send email in separate thread, do not wait   
-    emailThread = EmailThread(toUser.email, subject, message, mime_type=mime_type)
+    emailThread = EmailThread(toUser, subject, message, mime_type=mime_type)
     emailThread.start()
 
 def sendEmail(fromAddress, toAddress, subject, message):
@@ -80,3 +80,5 @@ class EmailThread(Thread):
             s.sendmail(emailConfig.sender, [self.toAddress], msg.as_string())
             s.quit()
             print 'Email sent.'
+        else:
+            print "Not Sent"
