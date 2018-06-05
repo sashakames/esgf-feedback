@@ -5,10 +5,10 @@ from setuptools import setup, find_packages
 
 
 setup(name='esgf_feedback',
-      version=0.0.1,
+      version="0.0.1",
       description='ESGF Email Sender Module',
       author='Sasha Ames',
-      author_email='g',
+      author_email='sasha@llnl.gov',
       url='https://github.com/ESGF/esgf-feedback',
       packages=find_packages(),
       include_package_data=True,
