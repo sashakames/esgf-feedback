@@ -69,14 +69,17 @@ class EmailThread(Thread):
             msg['Subject'] = self.subject
             msg['From'] = self.fromAddress
             msg['To'] = self.toAddress    
-            if emailConfig.port is not None:
-                s = smtplib.SMTP(emailConfig.server, emailConfig.port)
-            else:
-                s = smtplib.SMTP(emailConfig.server)
-            if emailConfig.security=='STARTTLS':
-                s.starttls()
-            if emailConfig.username and emailConfig.password:
-                s.login(emailConfig.username, emailConfig.password )
+
+#            if emailConfig.port is not None:
+#                s = smtplib.SMTP(emailConfig.server, emailConfig.port)
+#            else:
+            s = smtplib.SMTP(emailConfig.server)
+
+#            if emailConfig.security=='STARTTLS':
+#                s.starttls()
+#            if emailConfig.username and emailConfig.password:
+#                s.login(emailConfig.username, emailConfig.password )
+
             s.sendmail(emailConfig.sender, [self.toAddress], msg.as_string())
             s.quit()
             print 'Email sent.'

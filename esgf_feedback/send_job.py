@@ -57,7 +57,8 @@ def process_users(user_dict, user_addr=False):
         
 
             
-        dest_addr = addr_lookup.get(user)
+#        dest_addr = addr_lookup.get(user)
+        dest_addr = user
         subject = "ESGF Datatset status updates"
 
         body = format_email(user, user_action_dict)
