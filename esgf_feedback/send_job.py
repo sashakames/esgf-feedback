@@ -53,7 +53,7 @@ def process_users(user_dict, user_addr=False):
                 dset_lst.append(its["master_id"])
 
             else:                
-                user_action_dict[action] = its["master_id"]
+                user_action_dict[action] = [its["master_id"]]
         
 
             
