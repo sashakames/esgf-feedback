@@ -4,11 +4,11 @@
 from setuptools import setup, find_packages
 
 
-setup(name='esgprep',
-      version=0,
-      description='Email sender',
-      author='Levavasseur Guillaume',
-      author_email='glipsl@ipsl.fr',
+setup(name='esgf_feedback',
+      version=0.0.1,
+      description='ESGF Email Sender Module',
+      author='Sasha Ames',
+      author_email='g',
       url='https://github.com/ESGF/esgf-feedback',
       packages=find_packages(),
       include_package_data=True,
