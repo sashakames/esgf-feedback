@@ -49,6 +49,8 @@ def get(k):
 
 	try:
 		db_result = db_engine.execute(qstr)
+	except:
+		return
 
 	for row in db_result:
 		ret_addr = row[0]
