@@ -20,13 +20,15 @@ out_log_arr = []
 
 
 def format_email(user, user_action_dict):
-''' Arguments: (1) user name to address in email body; (2) a dictionary object (from json) dat structure that contains the datasets and respective update status, eg UPDATE or RETRACTION
-'''
+    ''' 
+    Arguments: (1) user name to address in email body; (2) a dictionary object (from json) dat structure that contains the datasets and respective update status, eg UPDATE or RETRACTION
+    '''
 # TODO format this for the user (decode the json)
-        message = "Dear " + user + ": here's a notification email regarding status changes to datasets."
 
-        outs = message + "\n" + json.dumps(user_action_dict)
-        return outs
+    message = "Dear " + user + ": here's a notification email regarding status changes to datasets."
+
+    outs = message + "\n" + json.dumps(user_action_dict)
+    return outs
 
 
 def process_users(user_dict, user_addr=False):
