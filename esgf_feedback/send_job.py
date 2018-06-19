@@ -15,8 +15,24 @@ user_dict = {}
 
 out_log_arr = []
 
+status_codes = {  "new-dataset"  : "New Dataset(s)" , "new-version" :"Updated version of an existing dataset",
+    "new-retraction" :  "Retracted dataset"}
 
 
+def decode_json(jobj):
+
+    outarr = []
+    # TODO actually expand this
+    for key in jobj :
+        vals = jobj[key]
+        outarr.append(status_codes[key])
+        outarr.append(': ')
+        outarr.append(', '.join(vals))
+        outarr.append('\n\n')
+
+    return ''.join(outarr)
+
+ 
 
 
 def format_email(user, user_action_dict):
@@ -27,7 +43,7 @@ def format_email(user, user_action_dict):
 
     message = "Dear " + user + ": here's a notification email regarding status changes to datasets."
 
-    outs = message + "\n" + json.dumps(user_action_dict)
+    outs = message + "\n" + decode_json(user_action_dict)
     return outs
 
 
