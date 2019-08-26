@@ -80,7 +80,7 @@ def process_users(user_dict, user_addr=False):
         body = format_email(user, user_action_dict)
 
         if (len(sys.argv) > 1 and sys.argv[1] == "--test"):
-            print dest_addr, subject, body 
+            print (dest_addr, subject, body )
         else:
             email_notify(dest_addr, subject, body)
 

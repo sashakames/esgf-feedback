@@ -12,11 +12,11 @@ class EmailConfig:
         self.server = "nospam.llnl.gov"
 
         self.sender = "ames4@llnl.gov"  # Testing purposes - change based on properties
-        print 'Using email sender=%s' %  self.sender
+        print ('Using email sender=%s' %  self.sender)
         self.init = True
             
         if not self.init:
-            print "Email configuration not found, email notification disabled"
+            print ("Email configuration not found, email notification disabled")
             
 # module scope email configuration
 emailConfig = EmailConfig()
@@ -53,10 +53,10 @@ class EmailThread(Thread):
     def run(self):
         
         #print "From: %s" % self.fromAddress
-        print "To: %s" % self.toAddress
-        print "Subject: %s" % self.subject
-        print "Message: %s" % self.message
-        print "Mime Type: %s" % self.mime_type
+        print ("To: %s" % self.toAddress)
+        print ("Subject: %s" % self.subject)
+        print ("Message: %s" % self.message)
+        print ("Mime Type: %s" % self.mime_type)
         
         # use local mail server
         #toUser.email_user(subject, message, from_email=fromAddress)
@@ -82,6 +82,6 @@ class EmailThread(Thread):
 
             s.sendmail(emailConfig.sender, [self.toAddress], msg.as_string())
             s.quit()
-            print 'Email sent.'
+            print ('Email sent.')
         else:
-            print "Not Sent"
+            print ("Not Sent")
