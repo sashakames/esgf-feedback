@@ -3,6 +3,7 @@ import json, os, logging, sys
 import addr_lookup
 from email_sender import notify as email_notify
 
+COG_HOST = "localhost:8000"
 
 IN_PATH = '/tmp/feedback'
 LOOK_PATH = IN_PATH + '.1'
@@ -41,9 +42,13 @@ def format_email(user, user_action_dict):
     '''
 # TODO format this for the user (decode the json)
 
-    message = "Dear " + user + ": here's a notification email regarding status changes to datasets."
 
-    outs = message + "\n" + decode_json(user_action_dict)
+    message = "Dear {}: here's a notification email regarding status changes to datasets.\n".format(user)
+
+    footer = "\n\nPlease use this page to change your subscription preferences or unsubscribe: http://{}/subscription/?action=modify".format(COG_HOST)
+
+    outs = message + "\n" + decode_json(user_action_dict) + footer
+
     return outs
 
 
